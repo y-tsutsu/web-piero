@@ -19,6 +19,7 @@
             <asp:Label ID="Label1" runat="server" Text="フリガナ"></asp:Label>
             <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True">
             </asp:DropDownList>
+            <asp:LinkButton ID="LinkButton5" runat="server" onclick="LinkButton5_Click">新規追加</asp:LinkButton>
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
                 CellPadding="4" DataKeyNames="koid" DataSourceID="SqlDataSource2" 
                 ForeColor="#333333" GridLines="None" 
@@ -64,18 +65,60 @@
                 ForeColor="#333333" GridLines="None" Height="50px" 
                 onitemdeleted="DetailsView1_ItemDeleted" 
                 oniteminserted="DetailsView1_ItemInserted" 
-                onitemupdated="DetailsView1_ItemUpdated" Width="250px">
+                onitemupdated="DetailsView1_ItemUpdated" Width="500px">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <CommandRowStyle BackColor="#E2DED6" Font-Bold="True" />
                 <EditRowStyle BackColor="#999999" />
+                <EmptyDataTemplate>
+                    <asp:LinkButton ID="LinkButton6" runat="server" CommandName="New">新規追加</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton7" runat="server" onclick="LinkButton7_Click">一覧</asp:LinkButton>
+                </EmptyDataTemplate>
                 <FieldHeaderStyle BackColor="#E9ECF1" Font-Bold="True" />
                 <Fields>
                     <asp:BoundField DataField="koid" HeaderText="顧客ID" InsertVisible="False" 
                         ReadOnly="True" SortExpression="koid" />
-                    <asp:BoundField DataField="koname" HeaderText="顧客名" SortExpression="koname" />
-                    <asp:BoundField DataField="furi" HeaderText="フリガナ" SortExpression="furi" />
-                    <asp:BoundField ApplyFormatInEditMode="True" DataField="birth" 
-                        DataFormatString="{0:d}" HeaderText="生年月日" SortExpression="birth" />
+                    <asp:TemplateField HeaderText="顧客名" SortExpression="koname">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("koname") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("koname") %>'></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                                ControlToValidate="TextBox1" ErrorMessage="RequiredFieldValidator" 
+                                ForeColor="Brown">顧客名を入力してください</asp:RequiredFieldValidator>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("koname") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="フリガナ" SortExpression="furi">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("furi") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("furi") %>'></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                                ControlToValidate="TextBox2" ErrorMessage="RequiredFieldValidator" 
+                                ForeColor="Brown">フリガナを入力してください</asp:RequiredFieldValidator>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("furi") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="生年月日" SortExpression="birth">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("birth", "{0:d}") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("birth", "{0:d}") %>'></asp:TextBox>
+                            <asp:RangeValidator ID="RangeValidator1" runat="server" 
+                                ControlToValidate="TextBox3" ErrorMessage="RangeValidator" ForeColor="Brown" 
+                                MaximumValue="2049/12/31" MinimumValue="1900/1/1" Type="Date">正しい年月日を入力してください</asp:RangeValidator>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("birth", "{0:d}") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="性別" SortExpression="gender">
                         <EditItemTemplate>
                             <asp:DropDownList ID="DropDownList4" runat="server" 
@@ -85,7 +128,11 @@
                             </asp:DropDownList>
                         </EditItemTemplate>
                         <InsertItemTemplate>
-                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("gender") %>'></asp:TextBox>
+                            <asp:DropDownList ID="DropDownList6" runat="server" 
+                                SelectedValue='<%# Bind("gender") %>'>
+                                <asp:ListItem Value="0">男</asp:ListItem>
+                                <asp:ListItem>女</asp:ListItem>
+                            </asp:DropDownList>
                         </InsertItemTemplate>
                         <ItemTemplate>
                             <asp:DropDownList ID="DropDownList3" runat="server" Enabled="False" 
@@ -95,15 +142,55 @@
                             </asp:DropDownList>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="zipcode" HeaderText="郵便番号" 
-                        SortExpression="zipcode" />
+                    <asp:TemplateField HeaderText="郵便番号" SortExpression="zipcode">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("zipcode") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("zipcode") %>'></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                                ControlToValidate="TextBox4" ErrorMessage="RegularExpressionValidator" 
+                                ForeColor="Brown" ValidationExpression="\d{3}(-(\d{4}|\d{2}))?">正しい郵便番号を入力してください</asp:RegularExpressionValidator>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("zipcode") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField DataField="addr1" HeaderText="住所1" SortExpression="addr1" />
                     <asp:BoundField DataField="addr2" HeaderText="住所2" SortExpression="addr2" />
                     <asp:BoundField DataField="tatemono" HeaderText="建物" 
                         SortExpression="tatemono" />
-                    <asp:BoundField DataField="telno" HeaderText="電話番号" SortExpression="telno" />
+                    <asp:TemplateField HeaderText="電話番号" SortExpression="telno">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("telno") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("telno") %>'></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
+                                ControlToValidate="TextBox5" ErrorMessage="RegularExpressionValidator" 
+                                ForeColor="Brown" 
+                                ValidationExpression="(0\d{1,4}-|\(0\d{1,4}\) ?)?\d{1,4}-\d{4}">正しい電話番号を入力してください</asp:RegularExpressionValidator>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label6" runat="server" Text='<%# Bind("telno") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField DataField="keitai" HeaderText="携帯" SortExpression="keitai" />
-                    <asp:BoundField DataField="email" HeaderText="Eメール" SortExpression="email" />
+                    <asp:TemplateField HeaderText="Eメール" SortExpression="email">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("email") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("email") %>'></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" 
+                                ControlToValidate="TextBox6" ErrorMessage="RegularExpressionValidator" 
+                                ForeColor="Brown" 
+                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">正しいメールアドレスを入力してください</asp:RegularExpressionValidator>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label7" runat="server" Text='<%# Bind("email") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:CheckBoxField DataField="melmaga" HeaderText="メルマガ送付" 
                         SortExpression="melmaga" />
                     <asp:TemplateField HeaderText="登録店舗" SortExpression="ttpcd">
@@ -117,7 +204,13 @@
                                 SelectCommand="SELECT [tpcd], [tpname] FROM [TENPO]"></asp:SqlDataSource>
                         </EditItemTemplate>
                         <InsertItemTemplate>
-                            <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("ttpcd") %>'></asp:TextBox>
+                            <asp:DropDownList ID="DropDownList7" runat="server" 
+                                DataSourceID="SqlDataSource1" DataTextField="tpname" DataValueField="tpcd" 
+                                SelectedValue='<%# Bind("ttpcd") %>'>
+                            </asp:DropDownList>
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                                ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+                                SelectCommand="SELECT [tpcd], [tpname] FROM [TENPO]"></asp:SqlDataSource>
                         </InsertItemTemplate>
                         <ItemTemplate>
                             <asp:Label ID="Label1" runat="server" Text='<%# Eval("tpname") %>'></asp:Label>
@@ -142,7 +235,8 @@
                             &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" 
                                 CommandName="New" Text="新規作成"></asp:LinkButton>
                             &nbsp;<asp:LinkButton ID="LinkButton3" runat="server" CausesValidation="False" 
-                                CommandName="Delete" Text="削除"></asp:LinkButton>
+                                CommandName="Delete" Text="削除" 
+                                onclientclick="return confirm(&quot;本当に削除しますか？&quot;)"></asp:LinkButton>
                             <asp:LinkButton ID="LinkButton4" runat="server" onclick="LinkButton4_Click">一覧</asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>

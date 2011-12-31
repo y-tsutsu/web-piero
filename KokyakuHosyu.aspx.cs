@@ -22,29 +22,48 @@ public partial class KokyakuHosyu : System.Web.UI.Page
         }
 
     }
+    // ----------------------------------------------------------------------------------------------------
 
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
     {
         MultiView1.ActiveViewIndex = 1;
     }
+    // ----------------------------------------------------------------------------------------------------
 
     protected void LinkButton4_Click(object sender, EventArgs e)
     {
         MultiView1.ActiveViewIndex = 0;
     }
+    // ----------------------------------------------------------------------------------------------------
 
     protected void DetailsView1_ItemUpdated(object sender, DetailsViewUpdatedEventArgs e)
     {
         GridView1.DataBind();
     }
+    // ----------------------------------------------------------------------------------------------------
 
     protected void DetailsView1_ItemInserted(object sender, DetailsViewInsertedEventArgs e)
     {
         GridView1.DataBind();
     }
+    // ----------------------------------------------------------------------------------------------------
 
     protected void DetailsView1_ItemDeleted(object sender, DetailsViewDeletedEventArgs e)
     {
         GridView1.DataBind();
     }
+    // ----------------------------------------------------------------------------------------------------
+
+    protected void LinkButton5_Click(object sender, EventArgs e)
+    {
+        MultiView1.ActiveViewIndex = 1;
+        GridView1.SelectedIndex = -1;
+    }
+    // ----------------------------------------------------------------------------------------------------
+
+    protected void LinkButton7_Click(object sender, EventArgs e)
+    {
+        MultiView1.ActiveViewIndex = 0;
+    }
+    // ----------------------------------------------------------------------------------------------------
 }
