@@ -1,13 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TantoHosyu.aspx.cs" Inherits="TantoHosyu" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterChildPage.master" AutoEventWireup="true" CodeFile="TantoHosyu.aspx.cs" Inherits="TantoHosyu" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body style="height: 54px">
-    <form id="form1" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
     <asp:DropDownList ID="DropDownList1" runat="server" 
         DataSourceID="SqlDataSource1" DataTextField="tpname" DataValueField="tpcd" 
         AutoPostBack="True">
@@ -45,6 +38,4 @@
                 PropertyName="SelectedValue" Type="Int16" />
         </SelectParameters>
     </asp:SqlDataSource>
-    </form>
-</body>
-</html>
+</asp:Content>

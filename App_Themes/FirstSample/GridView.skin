@@ -1,0 +1,25 @@
+﻿<%--
+既定のスキン テンプレート。次のスキンは例としてのみ提供されています。
+
+1. 名前付きコントロール スキン。一意の SkinId を定義する必要があります。同じテーマ内で、各コントロール型に対して重複 SkinId を使用することはできません。
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. 既定のスキン。SkinId は定義されていません。同じテーマ内で、各コントロール型に対して使用できる既定のコントロール スキンは 1 つだけです。
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+
+<asp:GridView runat="server" AutoGenerateColumns="False" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px"
+    CellPadding="4" Font-Size="12px" ForeColor="#333333" AllowSorting="True">
+    <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+    <RowStyle BackColor="#EFF3FB" />
+    <AlternatingRowStyle BackColor="White" />
+    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+</asp:GridView>
+
+
+
+
