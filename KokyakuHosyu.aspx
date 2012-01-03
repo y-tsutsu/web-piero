@@ -73,6 +73,9 @@
                     <asp:TemplateField HeaderText="顧客名" SortExpression="koname">
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("koname") %>'></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                                ControlToValidate="TextBox1" ErrorMessage="RequiredFieldValidator" 
+                                ForeColor="Brown">顧客名を入力してください</asp:RequiredFieldValidator>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("koname") %>'></asp:TextBox>
@@ -87,6 +90,9 @@
                     <asp:TemplateField HeaderText="フリガナ" SortExpression="furi">
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("furi") %>'></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                                ControlToValidate="TextBox2" ErrorMessage="RequiredFieldValidator" 
+                                ForeColor="Brown">フリガナを入力してください</asp:RequiredFieldValidator>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("furi") %>'></asp:TextBox>
@@ -101,6 +107,9 @@
                     <asp:TemplateField HeaderText="生年月日" SortExpression="birth">
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("birth", "{0:d}") %>'></asp:TextBox>
+                            <asp:RangeValidator ID="RangeValidator1" runat="server" 
+                                ControlToValidate="TextBox3" ErrorMessage="RangeValidator" ForeColor="Brown" 
+                                MaximumValue="2049/12/31" MinimumValue="1900/1/1" Type="Date">正しい年月日を入力してください</asp:RangeValidator>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("birth", "{0:d}") %>'></asp:TextBox>
@@ -138,6 +147,9 @@
                     <asp:TemplateField HeaderText="郵便番号" SortExpression="zipcode">
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("zipcode") %>'></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                                ControlToValidate="TextBox4" ErrorMessage="RegularExpressionValidator" 
+                                ForeColor="Brown" ValidationExpression="\d{3}(-(\d{4}|\d{2}))?">正しい郵便番号を入力してください</asp:RegularExpressionValidator>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("zipcode") %>'></asp:TextBox>
@@ -156,6 +168,10 @@
                     <asp:TemplateField HeaderText="電話番号" SortExpression="telno">
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("telno") %>'></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
+                                ControlToValidate="TextBox5" ErrorMessage="RegularExpressionValidator" 
+                                ForeColor="Brown" 
+                                ValidationExpression="(0\d{1,4}-|\(0\d{1,4}\) ?)?\d{1,4}-\d{4}">正しい電話番号を入力してください</asp:RegularExpressionValidator>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("telno") %>'></asp:TextBox>
@@ -168,10 +184,30 @@
                             <asp:Label ID="Label6" runat="server" Text='<%# Bind("telno") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="keitai" HeaderText="携帯" SortExpression="keitai" />
+                    <asp:TemplateField HeaderText="携帯" SortExpression="keitai">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("keitai") %>'></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" 
+                                ControlToValidate="TextBox7" ErrorMessage="RegularExpressionValidator" 
+                                ForeColor="Brown" ValidationExpression="\d{3}-\d{4}-\d{4}">正しい携帯番号を入力してください</asp:RegularExpressionValidator>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("keitai") %>'></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" 
+                                ControlToValidate="TextBox7" ErrorMessage="RegularExpressionValidator" 
+                                ForeColor="Brown" ValidationExpression="\d{3}-\d{4}-\d{4}">正しい携帯番号を入力してください</asp:RegularExpressionValidator>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label8" runat="server" Text='<%# Bind("keitai") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="Eメール" SortExpression="email">
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("email") %>'></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" 
+                                ControlToValidate="TextBox6" ErrorMessage="RegularExpressionValidator" 
+                                ForeColor="Brown" 
+                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">正しいメールアドレスを入力してください</asp:RegularExpressionValidator>
                         </EditItemTemplate>
                         <InsertItemTemplate>
                             <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("email") %>'></asp:TextBox>

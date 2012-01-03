@@ -5,7 +5,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <br />
     <asp:Label ID="Lavel1" runat="server"
-        Text="営業時間：9時30分～18時30分、水曜9時30分～18時、土･日・祝9時～17時　定休日：月曜、第3火曜">
+        Text="営業時間：9時30分～18時30分，水曜9時30分～18時，土･日・祝9時～17時">
+    </asp:Label>
+    <br />
+    <asp:Label ID="Lavel2" runat="server"
+        Text="定休日：月曜，第3火曜">
     </asp:Label>
     <br />
     <br />
@@ -14,7 +18,7 @@
     </asp:ContentPlaceHolder>
     <hr />
     <br />
-    <asp:Label ID="Label2" runat="server"
+    <asp:Label ID="Label3" runat="server"
         Text="大人の女性が満足できるサロンがリニューアル！">
     </asp:Label>
     <br />
