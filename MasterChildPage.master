@@ -1,4 +1,5 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="MasterChildPage.master.cs" Inherits="MasterChildPage" %>
+﻿
+<%@ Master Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="MasterChildPage.master.cs" Inherits="MasterChildPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -21,6 +22,7 @@
     <asp:Label ID="Label3" runat="server"
         Text="大人の女性が満足できるサロンがリニューアル！">
     </asp:Label>
+    <br />
     <br />
 </asp:Content>
 
