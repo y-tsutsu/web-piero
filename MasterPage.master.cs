@@ -11,4 +11,13 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
 
     }
+    // ----------------------------------------------------------------------------------------------------
+
+    protected void AdRotator_AdCreated(object sender, AdCreatedEventArgs e)
+    {
+        SqlDataSource1.InsertParameters["advid"].DefaultValue = e.AdProperties["advid"].ToString();
+        SqlDataSource1.Insert();
+        e.NavigateUrl = "~/AdvHandler.ashx?advid=" + e.AdProperties["advid"].ToString();
+    }
+    // ----------------------------------------------------------------------------------------------------
 }

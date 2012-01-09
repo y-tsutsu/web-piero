@@ -19,12 +19,19 @@
         <asp:Label ID="Label1" runat="server" Text="Copyright 2012 A-PIERO"></asp:Label>
         <br />
         <asp:AdRotator ID="AdRotator1" runat="server" Height="60px" Width="234px" KeywordFilter="styling" 
-            Target="_blank" DataSourceID="SqlDataSource1" />
+            Target="_blank" DataSourceID="SqlDataSource1" 
+            onadcreated="AdRotator_AdCreated" />
+        <asp:AdRotator ID="AdRotator2" runat="server" DataSourceID="SqlDataSource1" 
+            Height="60px" KeywordFilter="color" Target="_blank" Width="234px" 
+            onadcreated="AdRotator_AdCreated" />
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT * FROM [ADVTISE]"></asp:SqlDataSource>
-        <asp:AdRotator ID="AdRotator2" runat="server" DataSourceID="SqlDataSource1" 
-            Height="60px" KeywordFilter="color" Target="_blank" Width="234px" />
+            SelectCommand="SELECT * FROM [ADVTISE]" 
+            InsertCommand="INSERT INTO [ADCREATED] ([advid], [cDate]) VALUES (@advid, GetDate())">
+            <InsertParameters>
+                <asp:Parameter Name="advid" Type="Int32" />
+            </InsertParameters>
+        </asp:SqlDataSource>
     </div>
     </form>
 </body>

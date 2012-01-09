@@ -20,7 +20,6 @@ public partial class KokyakuHosyu : System.Web.UI.Page
                 DropDownList2.Items.Add(new ListItem(kana));
             }
         }
-
     }
     // ----------------------------------------------------------------------------------------------------
 
