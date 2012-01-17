@@ -19,7 +19,7 @@
             メモ:
             <asp:Label ID="kmemoLabel" runat="server" Text='<%# Eval("kmemo") %>' />
             <br />
-            <asp:Image ID="Image4" runat="server" 
+            &nbsp;<asp:Image ID="Image4" runat="server" 
                 ImageUrl='<%# Eval("kgid", "GetImage.aspx?kgid={0}") %>' />
             <br />
 <br /></span>
@@ -83,7 +83,7 @@
             メモ:
             <asp:Label ID="kmemoLabel" runat="server" Text='<%# Eval("kmemo") %>' />
             <br />
-            <asp:Image ID="Image3" runat="server" 
+            &nbsp;<asp:Image ID="Image3" runat="server" 
                 ImageUrl='<%# Eval("kgid", "GetImage.aspx?kgid={0}") %>' />
             <br />
             <br />
@@ -93,6 +93,14 @@
             <div ID="itemPlaceholderContainer" runat="server" 
                 style="font-family: Verdana, Arial, Helvetica, sans-serif;">
                 <span runat="server" id="itemPlaceholder" />
+            </div>
+            <div style="text-align: center;background-color: #FFCC66;font-family: Verdana, Arial, Helvetica, sans-serif;color: #333333;">
+                <asp:DataPager ID="DataPager1" runat="server">
+                    <Fields>
+                        <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" 
+                            ShowLastPageButton="True" />
+                    </Fields>
+                </asp:DataPager>
             </div>
         </LayoutTemplate>
         <SelectedItemTemplate>
