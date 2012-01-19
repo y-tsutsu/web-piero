@@ -11,7 +11,8 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/logo.jpg" />
+        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Images/logo.jpg" 
+            onclick="ImageButton1_Click" />
         <asp:Image ID="Image2" runat="server" Height="100px" 
             ImageUrl="~/Images/room.jpg" Width="134px" />
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">

@@ -20,4 +20,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
         e.NavigateUrl = "~/AdvHandler.ashx?advid=" + e.AdProperties["advid"].ToString();
     }
     // ----------------------------------------------------------------------------------------------------
+
+    protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("~/Default.aspx");
+    }
+    // ----------------------------------------------------------------------------------------------------
 }

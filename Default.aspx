@@ -1,17 +1,39 @@
-﻿<%@ Page Title="ホーム ページ" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="StartPage" %>
 
-<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
-</asp:Content>
-<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h2>
-        ASP.NET へようこそ!
-    </h2>
-    <p>
-        ASP.NET の詳細については、<a href="http://www.asp.net" title="ASP.NET Web サイト">www.asp.net</a> を参照してください。
-    </p>
-    <p>
-        <a href="http://go.microsoft.com/fwlink/?LinkID=152368"
-            title="MSDN ASP.NET ドキュメント">MSDN で ASP.NET に関するドキュメント</a>を参照することもできます。
-    </p>
-</asp:Content>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body bgcolor="#333333">
+    <form id="form1" runat="server">
+    <div>
+    
+        &nbsp;<br />
+&nbsp;<asp:Image ID="Image1" runat="server" ImageUrl="~/Images/TopLogo.jpg" />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:ImageButton ID="ImageButton1" runat="server" 
+            ImageUrl="~/Images/button01.jpg" onclick="ImageButton1_Click" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:ImageButton ID="ImageButton2" runat="server" 
+            ImageUrl="~/Images/button02.jpg" onclick="ImageButton2_Click" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:ImageButton ID="ImageButton3" runat="server" 
+            ImageUrl="~/Images/button03.jpg" onclick="ImageButton3_Click" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:ImageButton ID="ImageButton4" runat="server" 
+            ImageUrl="~/Images/button04.jpg" onclick="ImageButton4_Click" />
+        <br />
+        <br />
+    
+    </div>
+    </form>
+</body>
+</html>
