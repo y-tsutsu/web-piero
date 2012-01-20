@@ -15,25 +15,25 @@ public partial class StartPage : System.Web.UI.Page
 
     protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
     {
-        Response.Redirect("Kokyakuhosyu.aspx");
+        Response.Redirect("~/Kokyakuhosyu.aspx");
     }
     // ----------------------------------------------------------------------------------------------------
 
     protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
     {
-        Response.Redirect("Staff/PhotoUpload.aspx");
+        Response.Redirect("~/Staff/PhotoUpload.aspx");
     }
     // ----------------------------------------------------------------------------------------------------
 
     protected void ImageButton3_Click(object sender, ImageClickEventArgs e)
     {
-        Response.Redirect("Staff/PhotoList.aspx");
+        Response.Redirect("~/Staff/PhotoList.aspx");
     }
     // ----------------------------------------------------------------------------------------------------
 
     protected void ImageButton4_Click(object sender, ImageClickEventArgs e)
     {
-        Response.Redirect("Staff/MailMagazin.aspx");
+        Response.Redirect("~/Staff/MailMagazin.aspx");
     }
     // ----------------------------------------------------------------------------------------------------
 }
